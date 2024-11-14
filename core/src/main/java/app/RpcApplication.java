@@ -1,8 +1,11 @@
 package app;
 
+import config.RegistryConfig;
 import config.RpcConfig;
 import constant.RpcConstant;
 import lombok.extern.slf4j.Slf4j;
+import registry.Registry;
+import registry.RegistryFactory;
 import utils.ConfigUtils;
 
 /**
@@ -16,6 +19,12 @@ public class RpcApplication {
     public static void init(RpcConfig newConfig){
         rpcConfig = newConfig;
         log.info("rpc load config = {}",newConfig.toString());
+
+        // 注册中心初始化
+        RegistryConfig registryConfig = rpcConfig.getRegistryConfig();
+        Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
+        registry.init(registryConfig);
+        log.info("registry init, config = {}", registryConfig);
     }
 
     public static void init(){
