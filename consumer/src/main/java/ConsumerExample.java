@@ -18,6 +18,6 @@ public class ConsumerExample {
         }else {
             System.out.println("null user");
         }
-        System.out.println(userService.getNumber());
+        //System.out.println(userService.getNumber());
     }
 }

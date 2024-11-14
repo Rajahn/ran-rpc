@@ -1,6 +1,7 @@
 package config;
 
 import lombok.Data;
+import serializer.SerializerKeys;
 
 @Data
 public class RpcConfig {
@@ -15,5 +16,10 @@ public class RpcConfig {
 
     //当前进行的是模拟调用
     private boolean mock = false;
+
+    /**
+     * 序列化器
+     */
+    private String serializer = SerializerKeys.JDK;
 
 }
