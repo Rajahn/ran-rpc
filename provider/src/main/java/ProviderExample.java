@@ -2,6 +2,7 @@ import app.RpcApplication;
 import common.service.UserService;
 import config.RegistryConfig;
 import config.RpcConfig;
+import constant.RpcConstant;
 import model.ServiceMetaInfo;
 import registry.LocalRegistry;
 import registry.Registry;
@@ -25,6 +26,7 @@ public class ProviderExample {
         Registry registry = RegistryFactory.getInstance(registryConfig.getRegistry());
         ServiceMetaInfo serviceMetaInfo = new ServiceMetaInfo();
         serviceMetaInfo.setServiceName(serviceName);
+        serviceMetaInfo.setServiceVersion(RpcConstant.DEFAULT_SERVICE_VERSION);
         serviceMetaInfo.setServiceHost(rpcConfig.getServerHost());
         serviceMetaInfo.setServicePort(rpcConfig.getServerPort());
         try {
