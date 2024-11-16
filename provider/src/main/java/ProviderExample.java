@@ -9,6 +9,7 @@ import registry.Registry;
 import registry.RegistryFactory;
 import server.HttpServer;
 import server.VertxHttpServer;
+import server.tcp.VertxTcpServer;
 
 public class ProviderExample {
 
@@ -36,7 +37,8 @@ public class ProviderExample {
         }
 
 
-        HttpServer server = new VertxHttpServer();
+       // HttpServer server = new VertxHttpServer();
+        VertxTcpServer server = new VertxTcpServer();
         server.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
 }
