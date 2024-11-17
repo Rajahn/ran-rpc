@@ -1,0 +1,3 @@
+roundRobin=loadbalancer.RoundRobinLoadBalancer
+random=loadbalancer.RandomLoadBalancer
+consistentHash=loadbalancer.ConsistentHashLoadBalancer

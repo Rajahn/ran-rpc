@@ -1,5 +1,6 @@
 package config;
 
+import loadbalancer.LoadBalancerKeys;
 import lombok.Data;
 
 @Data

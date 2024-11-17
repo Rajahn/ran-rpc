@@ -1,5 +1,6 @@
 package config;
 
+import loadbalancer.LoadBalancerKeys;
 import lombok.Data;
 import serializer.SerializerKeys;
 
@@ -26,5 +27,7 @@ public class RpcConfig {
      * 注册中心配置
      */
     private RegistryConfig registryConfig = new RegistryConfig();
+
+    private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
 
 }
