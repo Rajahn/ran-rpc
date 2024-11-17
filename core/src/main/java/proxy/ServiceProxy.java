@@ -8,6 +8,8 @@ import cn.hutool.http.HttpResponse;
 import config.RpcConfig;
 import constant.ProtocolConstant;
 import constant.RpcConstant;
+import fault.retry.RetryStrategy;
+import fault.retry.RetryStrategyFactory;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.net.NetClient;
@@ -65,7 +67,10 @@ public class ServiceProxy implements InvocationHandler {
             // 暂时先取第一个
 //            ServiceMetaInfo selectedServiceMetaInfo = serviceMetaInfoList.get(0);
             // 发送 TCP 请求
-            RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo);
+            RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
+            RpcResponse rpcResponse = retryStrategy.doRetry(() ->
+                    VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo)
+            );
             return rpcResponse.getData();
         } catch (Exception e) {
             throw new RuntimeException("调用失败");

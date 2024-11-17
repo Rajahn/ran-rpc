@@ -1,5 +1,6 @@
 package config;
 
+import fault.retry.RetryStrategyKeys;
 import loadbalancer.LoadBalancerKeys;
 import lombok.Data;
 import serializer.SerializerKeys;
@@ -29,5 +30,7 @@ public class RpcConfig {
     private RegistryConfig registryConfig = new RegistryConfig();
 
     private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
+
+    private String retryStrategy = RetryStrategyKeys.NO;
 
 }
