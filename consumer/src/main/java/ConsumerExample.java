@@ -1,3 +1,4 @@
+import bootstrap.ConsumerBootstrap;
 import common.model.User;
 import common.service.UserService;
 import config.RpcConfig;
@@ -6,8 +7,9 @@ import utils.ConfigUtils;
 
 public class ConsumerExample {
     public static void main(String[] args) {
-//        RpcConfig rpc = ConfigUtils.loadConfig(RpcConfig.class,"rpc");
-//        System.out.println(rpc);
+        // 服务提供者初始化
+        ConsumerBootstrap.init();
+
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
         user.setName("yupi");
